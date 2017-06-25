@@ -1,4 +1,4 @@
-# MongoDB Deployment to GKE with Kubernetes Demo
+# Demo MongoDB Deployment to GKE with Kubernetes
 
 An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the Google Container Platform (GKE). Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
@@ -18,13 +18,11 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
 2. GCP’s client command line tool [gcloud](https://cloud.google.com/sdk/docs/quickstarts) has been installed. 
 3. Your local workstation has been initialsied to: (1) use your GCP account, (2) install the Kubernetes command tool (“kubectl”), (3) configure authentication credentials, and (4) set the default GCP zone to be deployed to:
 
-    ```
     $ gcloud init
     $ gcloud components install kubectl
     $ gcloud auth application-default login
     $ gcloud config set compute/zone europe-west1-b
-    ```
-
+    
 **Note:** If you want to specify an alternative zone to deploy to, in the above command, you can first view the list of available zones by running the command: `$ gcloud compute zones list`
 
 ### 1.2 Main Deployment Steps 
