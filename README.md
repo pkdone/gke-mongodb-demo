@@ -16,7 +16,7 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
 
 1. An account has been registered with the Google Compute Platform (GCP). You can sign up to a [free trial](https://cloud.google.com/free/) for GCP. Note: The free trial places some restrictions on account resource quotas, in particular restricting storage to a maximum of 100GB.
 2. GCP’s client command line tool [gcloud](https://cloud.google.com/sdk/docs/quickstarts) has been installed. 
-3. Your local workstation has been initialsied to: (1) use your GCP account, (2) install the Kubernetes command tool (“kubectl”), (3) configure authentication credentials, and (4) set the default GCP zone to be deployed to:
+3. Your local workstation has been initialised to: (1) use your GCP account, (2) install the Kubernetes command tool (“kubectl”), (3) configure authentication credentials, and (4) set the default GCP zone to be deployed to:
 
     ```
     $ gcloud init
@@ -44,7 +44,7 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
 
 To view the the state of the deployed environment you can also use the [Google Cloud Platform Console](https://console.cloud.google.com) (look at both the “Container Engine” and the “Compute Engine” sections of the Console).
 
-3. Execute the following script which connects to the first Mongod instance running in a container of the Kubernetes StatefulSet, via the Mongo Shell, to (1) initalise the MongoDB Replica Set, and (2) create a MongoDB admin user (specify the password you want as the argument to the script, replacing 'abc123').
+3. Execute the following script which connects to the first Mongod instance running in a container of the Kubernetes StatefulSet, via the Mongo Shell, to (1) initialise the MongoDB Replica Set, and (2) create a MongoDB admin user (specify the password you want as the argument to the script, replacing 'abc123').
 
     ```
     $ ./configure_repset_auth.sh abc123
@@ -101,9 +101,9 @@ You should see that the two records inserted earlier, are still present.
 
 ### 1.4 Undeploying & Cleaning Down the Kubernetes Environment
 
-**Important:** This step is required to ensure you aren't continously charged by Google Cloud for an environment you no longer need.
+**Important:** This step is required to ensure you aren't continuously charged by Google Cloud for an environment you no longer need.
 
-Run the following script to undeploy the MongoDB Service & StatefulSet plus related Kubernetes resoruces, followed by the removal of the GCE disks before finally deleting the GKE Kubernetes cluster.
+Run the following script to undeploy the MongoDB Service & StatefulSet plus related Kubernetes resources, followed by the removal of the GCE disks before finally deleting the GKE Kubernetes cluster.
 
     $ ./teardown.sh
     
