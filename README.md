@@ -71,34 +71,28 @@ Connect to the container running the first "mongod" replica, then use the Mongo 
     
 Exit out of the shell and exit out of the first container (“mongod-0”). Then connect to the second container (“mongod-1”), run the Mongo Shell again and see if the previously inserted data is visible to the second "mongod" replica:
 
-    ```
     $ kubectl exec -it mongod-1 -c mongod-container bash
     $ mongo
     > db.getSiblingDB('admin').auth("main_admin", "abc123");
     > db.setSlaveOk(1);
     > use test;
     > db.testcoll.find();
-    ```
-
+    
 You should see that the two records inserted via the first replica, are visible to the second replica.
 
 To see if Persistent Volume Claims really are working, run a script to drop the Service & StatefulSet (thus stopping the pods and their “mongod” containers) and then a script to re-create them again:
 
-    ```
     $ ./delete_service.sh
     $ ./recreate_service
     $ kubectl get all
-    ```
-
+    
 As before, keep re-running the last command above, until you can see that all 3 “mongod” pods and their containers have been successfully started again. Then connect to the first container, run the Mongo Shell and query to see if the data we’d inserted into the old containerised replica-set is still present in the re-instantiated replica set:
 
-    ```
     $ kubectl exec -it mongod-0 -c mongod-container bash
     $ mongo
     > use test;
     > db.testcoll.find();
-    ```
-
+    
 You should see that the two records inserted earlier, are still present.
 
 ### 1.4 Undeploying & Cleaning Down the Kubernetes Environment
@@ -107,9 +101,7 @@ You should see that the two records inserted earlier, are still present.
 
 Run the following script to undeploy the MongoDB Service & StatefulSet plus related Kubernetes resoruces, followed by the removal of the GCE disks before finally deleting the GKE Kubernetes cluster.
 
-    ```
     $ ./teardown.sh
-    ```
-
+    
 It is also worth checking in the [Google Cloud Platform Console](https://console.cloud.google.com), to ensure all resources have been removed correctly.
 
