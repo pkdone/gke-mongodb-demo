@@ -1,4 +1,4 @@
-# Demo MongoDB Deployment to GKE with Kubernetes
+# MongoDB Deployment Demo for Kubernetes on GKE
 
 An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the Google Container Platform (GKE). Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
@@ -59,6 +59,8 @@ Use this section to prove:
 1. Data is being replicated between members of the containerised replica set.
 2. Data is retained even when the MongoDB Service/StatefulSet is removed and then re-created (by virtue of re-using the same Persistent Volume Claims).
 
+#### 1.3.1 Replication Test
+
 Connect to the container running the first "mongod" replica, then use the Mongo Shell to authenticate and add some test data to a database:
 
     $ kubectl exec -it mongod-0 -c mongod-container bash
@@ -79,6 +81,8 @@ Exit out of the shell and exit out of the first container (“mongod-0”). Then
     > db.testcoll.find();
     
 You should see that the two records inserted via the first replica, are visible to the second replica.
+
+#### 1.3.2 Redeployment Without Data Lost Test
 
 To see if Persistent Volume Claims really are working, run a script to drop the Service & StatefulSet (thus stopping the pods and their “mongod” containers) and then a script to re-create them again:
 
