@@ -18,11 +18,13 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
 2. GCP’s client command line tool [gcloud](https://cloud.google.com/sdk/docs/quickstarts) has been installed. 
 3. Your local workstation has been initialsied to: (1) use your GCP account, (2) install the Kubernetes command tool (“kubectl”), (3) configure authentication credentials, and (4) set the default GCP zone to be deployed to:
 
+    ```
     $ gcloud init
     $ gcloud components install kubectl
     $ gcloud auth application-default login
     $ gcloud config set compute/zone europe-west1-b
-    
+    ```
+
 **Note:** If you want to specify an alternative zone to deploy to, in the above command, you can first view the list of available zones by running the command: `$ gcloud compute zones list`
 
 ### 1.2 Main Deployment Steps 
@@ -59,7 +61,6 @@ Use this section to prove:
 
 Connect to the container running the first "mongod" replica, then use the Mongo Shell to authenticate and add some test data to a database:
 
-    ```
     $ kubectl exec -it mongod-0 -c mongod-container bash
     $ mongo
     > db.getSiblingDB('admin').auth("main_admin", "abc123");
@@ -67,8 +68,7 @@ Connect to the container running the first "mongod" replica, then use the Mongo 
     > db.testcoll.insert({a:1});
     > db.testcoll.insert({b:2});
     > db.testcoll.find();
-    ```
-
+    
 Exit out of the shell and exit out of the first container (“mongod-0”). Then connect to the second container (“mongod-1”), run the Mongo Shell again and see if the previously inserted data is visible to the second "mongod" replica:
 
     ```
