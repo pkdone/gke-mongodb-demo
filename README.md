@@ -42,8 +42,6 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
     $ kubectl get all
     ```
 
-To view the the state of the deployed environment you can also use the [Google Cloud Platform Console](https://console.cloud.google.com) (look at both the “Container Engine” and the “Compute Engine” sections of the Console).
-
 3. Execute the following script which connects to the first Mongod instance running in a container of the Kubernetes StatefulSet, via the Mongo Shell, to (1) initialise the MongoDB Replica Set, and (2) create a MongoDB admin user (specify the password you want as the argument to the script, replacing 'abc123').
 
     ```
@@ -51,6 +49,8 @@ To view the the state of the deployed environment you can also use the [Google C
     ```
 
 You should now have a MongoDB Replica Set initialised, secured and running in a Kubernetes Stateful Set.
+
+You can also view the the state of the deployed environment via the [Google Cloud Platform Console](https://console.cloud.google.com) (look at both the “Container Engine” and the “Compute Engine” sections of the Console).
 
 ### 1.3 Example Tests To Run To Check Things Are Working
 
