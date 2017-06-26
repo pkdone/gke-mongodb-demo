@@ -94,6 +94,7 @@ As before, keep re-running the last command above, until you can see that all 3 
 
     $ kubectl exec -it mongod-0 -c mongod-container bash
     $ mongo
+    > db.getSiblingDB('admin').auth("main_admin", "abc123");
     > use test;
     > db.testcoll.find();
     
