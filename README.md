@@ -4,7 +4,7 @@ An example project demonstrating the deployment of a MongoDB Replica Set via Kub
 
 For further background information on what these scripts and resource files do, see the series of related blog posts written by this project's author:
 
-* [Deploying a MongoDB Replica Set as a GKE Kubernetes StatefulSet](http://todo)
+* [Deploying a MongoDB Replica Set as a GKE Kubernetes StatefulSet](http://pauldone.blogspot.co.uk/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
 * Configuring Some Key Production Settings for MongoDB on GKE Kubernetes (coming soon)
 * Using the Enterprise Version of MongoDB on GKE Kubernetes (coming soon)
 
@@ -25,7 +25,7 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
     $ gcloud config set compute/zone europe-west1-b
     ```
 
-**Note:** If you want to specify an alternative zone to deploy to, in the above command, you can first view the list of available zones by running the command: `$ gcloud compute zones list`
+**Note:** To specify an alternative zone to deploy to, in the above command, you can first view the list of available zones by running the command: `$ gcloud compute zones list`
 
 ### 1.2 Main Deployment Steps 
 
@@ -36,7 +36,7 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
     $ ./generate.sh
     ```
 
-2. Re-run the following command, until all 3 “mongod” pods (and their containers) have been successfully started (i.e. once they show "Status" is "Running”; usually takes a minute or two).
+2. Re-run the following command, until all 3 “mongod” pods (and their containers) have been successfully started (“Status=Running”; usually takes a minute or two).
 
     ```
     $ kubectl get all
@@ -82,12 +82,12 @@ Exit out of the shell and exit out of the first container (“mongod-0”). Then
     
 You should see that the two records inserted via the first replica, are visible to the second replica.
 
-#### 1.3.2 Redeployment Without Data Lost Test
+#### 1.3.2 Redeployment Without Data Loss Test
 
 To see if Persistent Volume Claims really are working, run a script to drop the Service & StatefulSet (thus stopping the pods and their “mongod” containers) and then a script to re-create them again:
 
     $ ./delete_service.sh
-    $ ./recreate_service
+    $ ./recreate_service.sh
     $ kubectl get all
     
 As before, keep re-running the last command above, until you can see that all 3 “mongod” pods and their containers have been successfully started again. Then connect to the first container, run the Mongo Shell and query to see if the data we’d inserted into the old containerised replica-set is still present in the re-instantiated replica set:
