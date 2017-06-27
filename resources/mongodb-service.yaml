@@ -48,9 +48,11 @@ spec:
         - name: mongod-container
           image: mongo
           command:
+            - "numactl"
+            - "--interleave=all"
             - "mongod"
             - "--wiredTigerCacheSizeGB"
-            - "1"
+            - "0.25"
             - "--replSet"
             - "MainRepSet"
             - "--auth"

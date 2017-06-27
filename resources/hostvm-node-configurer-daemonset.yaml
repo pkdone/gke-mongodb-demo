@@ -24,7 +24,7 @@ spec:
             set -o pipefail
             set -o nounset
             
-            # Diaable hugepages
+            # Diable hugepages
             echo 'never' > /sys/kernel/mm/transparent_hugepage/enabled
             echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
                         
