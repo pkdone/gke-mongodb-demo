@@ -5,7 +5,7 @@ An example project demonstrating the deployment of a MongoDB Replica Set via Kub
 For further background information on what these scripts and resource files do, see the series of related blog posts written by this project's author:
 
 * [Deploying a MongoDB Replica Set as a GKE Kubernetes StatefulSet](http://pauldone.blogspot.co.uk/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
-* Configuring Some Key Production Settings for MongoDB on GKE Kubernetes (coming soon)
+* [Configuring Some Key Production Settings for MongoDB on GKE Kubernetes](http://pauldone.blogspot.co.uk/2017/06/mongodb-kubernetes-production-settings.html)
 * Using the Enterprise Version of MongoDB on GKE Kubernetes (coming soon)
 
 ## 1  How To Run
