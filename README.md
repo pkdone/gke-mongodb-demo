@@ -2,13 +2,14 @@
 
 An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the Google Container Platform (GKE). Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
-For further background information on what these scripts and resource files do, see the series of related blog posts written by this project's author:
+For further background information on what these scripts and resource files do, see section 2 of this document and also see the series of related blog posts written by this project's author:
 
 * [Deploying a MongoDB Replica Set as a GKE Kubernetes StatefulSet](http://pauldone.blogspot.co.uk/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
 * [Configuring Some Key Production Settings for MongoDB on GKE Kubernetes](http://pauldone.blogspot.co.uk/2017/06/mongodb-kubernetes-production-settings.html)
 * Using the Enterprise Version of MongoDB on GKE Kubernetes (coming soon)
 
-## 1  How To Run
+
+## 1 How To Run
 
 ### 1.1 Prerequisites
 
@@ -109,4 +110,19 @@ Run the following script to undeploy the MongoDB Service & StatefulSet plus rela
     $ ./teardown.sh
     
 It is also worth checking in the [Google Cloud Platform Console](https://console.cloud.google.com), to ensure all resources have been removed correctly.
+
+
+## 2 Factors Addressed By This Project
+
+* Deployment of a MongoDB on GKE's Kubernetes platform
+* Use of Kubernetes StatefulSets and PersistentVolumeClaims to ensure data is not lost when containers are recycled
+* Proper configuration of a MongoDB Replica Set for full resiliency
+* Securing MongoDB by default for new deployments
+* Leveraging XFS filesystem for data file storage to improve performance
+* Disabling Transparent Huge Pages to improve performance
+* Disabling NUMA to improve performance
+* Controlling CPU & RAM Resource Allocation
+* Correctly configuring WiredTiger Cache Size in containers
+* Controlling Anti-Affinity for Mongod Replicas to avoid a Single Point of Failure
+
 
