@@ -46,6 +46,7 @@ spec:
             defaultMode: 256
       containers:
         - name: mongod-container
+          #image: pkdone/mongo-ent:3.4
           image: mongo
           command:
             - "numactl"
