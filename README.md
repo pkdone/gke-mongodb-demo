@@ -6,7 +6,7 @@ For further background information on what these scripts and resource files do, 
 
 * [Deploying a MongoDB Replica Set as a GKE Kubernetes StatefulSet](http://pauldone.blogspot.co.uk/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
 * [Configuring Some Key Production Settings for MongoDB on GKE Kubernetes](http://pauldone.blogspot.co.uk/2017/06/mongodb-kubernetes-production-settings.html)
-* Using the Enterprise Version of MongoDB on GKE Kubernetes (coming soon)
+* [Using the Enterprise Version of MongoDB on GKE Kubernetes](http://pauldone.blogspot.co.uk/2017/06/enterprise-mongodb-on-kubernetes.html)
 
 
 ## 1 How To Run
