@@ -4,7 +4,7 @@ metadata:
   name: data-volume-INST
 spec:
   capacity:
-    storage: 30Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain

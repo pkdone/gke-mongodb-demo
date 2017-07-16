@@ -16,7 +16,7 @@ kubectl apply -f ../resources/gce-ssd-storageclass.yaml
 sleep 5
 for i in 1 2 3
 do
-    gcloud compute disks create --size 30GB --type pd-ssd pd-ssd-disk-$i
+    gcloud compute disks create --size 10GB --type pd-ssd pd-ssd-disk-$i
 done
 sleep 3
 
