@@ -10,20 +10,24 @@ gcloud container clusters create "gke-mongodb-demo-cluster" --image-type=CONTAIN
 # Configure host VM using daemonset to add XFS mounting support and disable hugepages
 kubectl apply -f ../resources/hostvm-node-configurer-daemonset.yaml
 
-# Register GCE Fast SSD persistent disks
+# Register GCE Fast SSD persistent disks and then create the persistent disks 
+echo "Creating GCE disks"
 kubectl apply -f ../resources/gce-ssd-storageclass.yaml
 sleep 5
-
-# Create GCE persistent disks 
-gcloud compute disks create --size 30GB --type pd-ssd pd-ssd-disk-1
-gcloud compute disks create --size 30GB --type pd-ssd pd-ssd-disk-2
-gcloud compute disks create --size 30GB --type pd-ssd pd-ssd-disk-3
+for i in 1 2 3
+do
+    gcloud compute disks create --size 30GB --type pd-ssd pd-ssd-disk-$i
+done
 sleep 3
 
 # Create persistent volumes using disks created above
-kubectl apply -f ../resources/xfs-gce-ssd-persistentvolume1.yaml
-kubectl apply -f ../resources/xfs-gce-ssd-persistentvolume2.yaml
-kubectl apply -f ../resources/xfs-gce-ssd-persistentvolume3.yaml
+echo "Creating GKE Persistent Volumes"
+for i in 1 2 3
+do
+    sed -e "s/INST/${i}/g" ../resources/xfs-gce-ssd-persistentvolume.yaml > /tmp/xfs-gce-ssd-persistentvolume.yaml
+    kubectl apply -f /tmp/xfs-gce-ssd-persistentvolume.yaml
+done
+rm /tmp/xfs-gce-ssd-persistentvolume.yaml
 sleep 3
 
 # Create keyfile for the MongoD cluster as a Kubernetes shared secret

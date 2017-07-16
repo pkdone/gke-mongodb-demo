@@ -15,14 +15,18 @@ kubectl delete persistentvolumeclaims -l role=mongo
 sleep 3
 
 # Delete persistent volumes
-kubectl delete persistentvolumes data-volume-1
-kubectl delete persistentvolumes data-volume-2
-kubectl delete persistentvolumes data-volume-3
+for i in 1 2 3
+do
+    kubectl delete persistentvolumes data-volume-$i
+done
 sleep 20
 
-# Delete GCE disks and then delete whole Kubernetes cluster (including its VM instances)
-gcloud -q compute disks delete pd-ssd-disk-1
-gcloud -q compute disks delete pd-ssd-disk-2
-gcloud -q compute disks delete pd-ssd-disk-3
+# Delete GCE disks
+for i in 1 2 3
+do
+    gcloud -q compute disks delete pd-ssd-disk-$i
+done
+
+# Delete whole Kubernetes cluster (including its VM instances)
 gcloud -q container clusters delete "gke-mongodb-demo-cluster"
 
