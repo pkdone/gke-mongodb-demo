@@ -11,7 +11,7 @@
 # Check for password argument
 if [[ $# -eq 0 ]] ; then
     echo 'You must provide one argument for the password of the "main_admin" user to be created'
-    echo '  Usage:  configure_repset_auth.sh MyPa55wd123s'
+    echo '  Usage:  configure_repset_auth.sh MyPa55wd123'
     echo
     exit 1
 fi
