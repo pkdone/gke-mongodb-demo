@@ -9,6 +9,8 @@ For further background information on what these scripts and resource files do, 
 * [Using the Enterprise Version of MongoDB on GKE Kubernetes](http://pauldone.blogspot.co.uk/2017/06/enterprise-mongodb-on-kubernetes.html)
 * [Deploying a MongoDB Sharded Cluster using Kubernetes StatefulSets on GKE](http://pauldone.blogspot.co.uk/2017/07/sharded-mongodb-kubernetes.html)
 
+More information about MongoDB & Kubernetes is available at: [http://k8smongodb.net/](http://k8smongodb.net/)
+
 
 ## 1 How To Run
 
