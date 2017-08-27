@@ -2,14 +2,7 @@
 
 An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the Google Container Platform (GKE). Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
-For further background information on what these scripts and resource files do, see section 2 of this document and also see the series of related blog posts written by this project's author:
-
-* [Deploying a MongoDB Replica Set as a GKE Kubernetes StatefulSet](http://pauldone.blogspot.co.uk/2017/06/deploying-mongodb-on-kubernetes-gke25.html)
-* [Configuring Some Key Production Settings for MongoDB on GKE Kubernetes](http://pauldone.blogspot.co.uk/2017/06/mongodb-kubernetes-production-settings.html)
-* [Using the Enterprise Version of MongoDB on GKE Kubernetes](http://pauldone.blogspot.co.uk/2017/06/enterprise-mongodb-on-kubernetes.html)
-* [Deploying a MongoDB Sharded Cluster using Kubernetes StatefulSets on GKE](http://pauldone.blogspot.co.uk/2017/07/sharded-mongodb-kubernetes.html)
-
-More information about MongoDB & Kubernetes is available at: [http://k8smongodb.net/](http://k8smongodb.net/)
+For further background information on what these scripts and resource files do, plus general information about running MongoDB with Kubernetes, see: [http://k8smongodb.net/](http://k8smongodb.net/)
 
 
 ## 1 How To Run
