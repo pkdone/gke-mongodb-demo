@@ -73,8 +73,8 @@ Exit out of the shell and exit out of the first container (“mongod-0”). Then
     $ kubectl exec -it mongod-1 -c mongod-container bash
     $ mongo
     > db.getSiblingDB('admin').auth("main_admin", "abc123");
-    > db.setSlaveOk(1);
     > use test;
+    > db.setSlaveOk(1);
     > db.testcoll.find();
     
 You should see that the two records inserted via the first replica, are visible to the second replica.
