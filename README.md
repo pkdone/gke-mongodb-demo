@@ -26,7 +26,7 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
 
 ### 1.2 Main Deployment Steps 
 
-1. To create a Kubernetes cluster, create the required disk storage (and associated PersistentVolumes), and deploy the MongoDB Service (including the StatefulSet running "mongod" containers), via a command-line terminal/shell, execute the following; if on linux run chmod 777 on following scripts:
+1. To create a Kubernetes cluster, create the required disk storage (and associated PersistentVolumes), and deploy the MongoDB Service (including the StatefulSet running "mongod" containers), via a command-line terminal/shell (ensure the script files set to be executable):
 
     ```
     $ cd scripts
