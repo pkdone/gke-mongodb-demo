@@ -24,11 +24,7 @@ spec:
             set -o pipefail
             set -o nounset
             
-            # Diable hugepages
+            # Disable hugepages
             echo 'never' > /sys/kernel/mm/transparent_hugepage/enabled
             echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
-                        
-            # Install tool to enable XFS mounting
-            apt-get update || true
-            apt-get install -y xfsprogs
 
