@@ -38,12 +38,27 @@ rm $TMPFILE
 
 # Create mongodb service with mongod stateful-set
 kubectl apply -f ../resources/mongodb-service.yaml
-sleep 5
 
-# Print current deployment state (unlikely to be finished yet)
-kubectl get all 
+# Wait until each of the 3 mongods have started properly
+echo "Waiting for the 3 containters to come up (`date`)..."
+echo "  (IGNORE any reported connection errors)"
+sleep 20
+until kubectl --v=0 exec mongod-0 -c mongod-container -- mongo --quiet --eval 'db.getMongo()'; do
+    sleep 5
+done
+sleep 10
+until kubectl --v=0 exec mongod-1 -c mongod-container -- mongo --quiet --eval 'db.getMongo()'; do
+    sleep 5
+done
+sleep 10
+until kubectl --v=0 exec mongod-2 -c mongod-container -- mongo --quiet --eval 'db.getMongo()'; do
+    sleep 5
+done
+echo "...mongod containers are now running (`date`)"
+echo
+
+# Print current deployment state
 kubectl get persistentvolumes
 echo
-echo "Keep running the following command until all 'mongod-n' pods are shown as running:  kubectl get all"
-echo
+kubectl get all 
 

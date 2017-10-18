@@ -33,13 +33,7 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
     $ ./generate.sh
     ```
 
-2. Re-run the following command, until all 3 “mongod” pods (and their containers) have been successfully started (“Status=Running”; usually takes a minute or two).
-
-    ```
-    $ kubectl get all
-    ```
-
-3. Execute the following script which connects to the first Mongod instance running in a container of the Kubernetes StatefulSet, via the Mongo Shell, to (1) initialise the MongoDB Replica Set, and (2) create a MongoDB admin user (specify the password you want as the argument to the script, replacing 'abc123').
+2. Execute the following script which connects to the first Mongod instance running in a container of the Kubernetes StatefulSet, via the Mongo Shell, to (1) initialise the MongoDB Replica Set, and (2) create a MongoDB admin user (specify the password you want as the argument to the script, replacing 'abc123').
 
     ```
     $ ./configure_repset_auth.sh abc123
@@ -87,7 +81,7 @@ To see if Persistent Volume Claims really are working, run a script to drop the 
     $ ./recreate_service.sh
     $ kubectl get all
     
-As before, keep re-running the last command above, until you can see that all 3 “mongod” pods and their containers have been successfully started again. Then connect to the first container, run the Mongo Shell and query to see if the data we’d inserted into the old containerised replica-set is still present in the re-instantiated replica set:
+Keep re-running the final command above, until you can see that all 3 “mongod” pods and their containers have been successfully started again. Then connect to the first container, run the Mongo Shell and query to see if the data we’d inserted into the old containerised replica-set is still present in the re-instantiated replica set:
 
     $ kubectl exec -it mongod-0 -c mongod-container bash
     $ mongo
