@@ -4,8 +4,8 @@
 # Kubernetes StatefulSet, via the Mongo Shell, to initalise a MongoDB Replica
 # Set and create a MongoDB admin user.
 #
-# IMPORTANT: Only run this once 3 StatefulSet mongod pods are show with status
-# running (to see pod status run: $ kubectl get all)
+# IMPORTANT: Only run this once all 3 StatefulSet mongod pods are shown with
+# status running (to see pod status run: $ kubectl get all)
 ##
 
 # Check for password argument
@@ -16,14 +16,17 @@ if [[ $# -eq 0 ]] ; then
     exit 1
 fi
 
-# Initiate replica set configuration
+# Initiate MongoDB Replica Set configuration
 echo "Configuring the MongoDB Replica Set"
 kubectl exec mongod-0 -c mongod-container -- mongo --eval 'rs.initiate({_id: "MainRepSet", version: 1, members: [ {_id: 0, host: "mongod-0.mongodb-service.default.svc.cluster.local:27017"}, {_id: 1, host: "mongod-1.mongodb-service.default.svc.cluster.local:27017"}, {_id: 2, host: "mongod-2.mongodb-service.default.svc.cluster.local:27017"} ]});'
+echo
 
-# Wait a bit until the replica set should have a primary ready
-echo "Waiting for the Replica Set to initialise..."
-sleep 15
-kubectl exec mongod-0 -c mongod-container -- mongo --eval 'rs.status();'
+# Wait for the MongoDB Replica Set to have a primary ready
+echo "Waiting for the MongoDB Replica Set to initialise..."
+kubectl exec mongod-0 -c mongod-container -- mongo --eval 'while (rs.status().hasOwnProperty("myState") && rs.status().myState != 1) { print("."); sleep(1000); };'
+sleep 2 # Just a little more sleep to ensure everything is ready!
+echo "...initialisation of MongoDB Replica Set completed"
+echo
 
 # Create the admin user (this will automatically disable the localhost exception)
 echo "Creating user: 'main_admin'"
