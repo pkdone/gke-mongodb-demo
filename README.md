@@ -41,6 +41,10 @@ Ensure the following dependencies are already fulfilled on your host Linux/Windo
 
 You should now have a MongoDB Replica Set initialised, secured and running in a Kubernetes Stateful Set.
 
+You can view the list of Pods that contain these MongoDB resources, by running the following:
+
+    $ kubectl get pods
+
 You can also view the the state of the deployed environment via the [Google Cloud Platform Console](https://console.cloud.google.com) (look at both the “Container Engine” and the “Compute Engine” sections of the Console).
 
 ### 1.3 Example Tests To Run To Check Things Are Working
