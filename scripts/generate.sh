@@ -7,7 +7,7 @@
 # rather than ChromiumOS default & also use slightly larger VMs than default)
 gcloud container clusters create "gke-mongodb-demo-cluster" --image-type=UBUNTU --machine-type=n1-standard-2
 
-# Configure host VM using daemonset to add XFS mounting support and disable hugepages
+# Configure host VM using daemonset to disable hugepages
 kubectl apply -f ../resources/hostvm-node-configurer-daemonset.yaml
 
 # Register GCE Fast SSD persistent disks and then create the persistent disks 
@@ -38,21 +38,16 @@ rm $TMPFILE
 
 # Create mongodb service with mongod stateful-set
 kubectl apply -f ../resources/mongodb-service.yaml
+echo
 
-# Wait until each of the 3 mongods have started properly
-echo "Waiting for the 3 containters to come up (`date`)..."
-echo "  (IGNORE any reported connection errors)"
-sleep 20
-until kubectl --v=0 exec mongod-0 -c mongod-container -- mongo --quiet --eval 'db.getMongo()'; do
-    sleep 5
-done
-sleep 10
-until kubectl --v=0 exec mongod-1 -c mongod-container -- mongo --quiet --eval 'db.getMongo()'; do
-    sleep 5
-done
-sleep 10
+# Wait until the final (3rd) mongod has started properly
+echo "Waiting for the 3 containers to come up (`date`)..."
+echo " (IGNORE any reported not found & connection errors)"
+sleep 30
+echo -n "  "
 until kubectl --v=0 exec mongod-2 -c mongod-container -- mongo --quiet --eval 'db.getMongo()'; do
     sleep 5
+    echo -n "  "
 done
 echo "...mongod containers are now running (`date`)"
 echo
