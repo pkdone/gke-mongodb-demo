@@ -47,9 +47,11 @@ You can also view the the state of the deployed environment via the [Google Clou
 
 The running replica set members will be accessible to any "app tier" containers, that are running in the same Kubernetes cluster, via the following IP addresses and ports (remember to also specify the username and password, when connecting to the database):
 
-1. mongod-0.mongodb-service.default.svc.cluster.local:27017
-2. mongod-1.mongodb-service.default.svc.cluster.local:27017
-3. mongod-2.mongodb-service.default.svc.cluster.local:27017
+    ```
+    mongod-0.mongodb-service.default.svc.cluster.local:27017
+    mongod-1.mongodb-service.default.svc.cluster.local:27017
+    mongod-2.mongodb-service.default.svc.cluster.local:27017
+    ```
 
 ### 1.3 Example Tests To Run To Check Things Are Working
 
