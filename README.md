@@ -45,6 +45,12 @@ You should now have a MongoDB Replica Set initialised, secured and running in a 
 
 You can also view the the state of the deployed environment via the [Google Cloud Platform Console](https://console.cloud.google.com) (look at both the “Container Engine” and the “Compute Engine” sections of the Console).
 
+The running replica set members will be accessible to any "app tier" containers, that are running in the same Kubernetes cluster, via the following IP addresses and ports (remember to also specify the username and password, when connecting to the database):
+
+1. mongod-0.mongodb-service.default.svc.cluster.local:27017
+2. mongod-1.mongodb-service.default.svc.cluster.local:27017
+3. mongod-2.mongodb-service.default.svc.cluster.local:27017
+
 ### 1.3 Example Tests To Run To Check Things Are Working
 
 Use this section to prove:
