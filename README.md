@@ -1,6 +1,6 @@
 # MongoDB Deployment Demo for Kubernetes on GKE
 
-An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the Google Kubernetes Platform (GKE). Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
+An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the Google Kubernetes Engine (GKE). Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
 For further background information on what these scripts and resource files do, plus general information about running MongoDB with Kubernetes, see: [http://k8smongodb.net/](http://k8smongodb.net/)
 
@@ -112,7 +112,7 @@ It is also worth checking in the [Google Cloud Platform Console](https://console
 
 ## 2 Factors Addressed By This Project
 
-* Deployment of a MongoDB on Google Kubernetes Platform
+* Deployment of a MongoDB on the Google Kubernetes Engine
 * Use of Kubernetes StatefulSets and PersistentVolumeClaims to ensure data is not lost when containers are recycled
 * Proper configuration of a MongoDB Replica Set for full resiliency
 * Securing MongoDB by default for new deployments
