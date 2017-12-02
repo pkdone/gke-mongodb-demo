@@ -10,10 +10,13 @@ gcloud container clusters create "gke-mongodb-demo-cluster" --image-type=UBUNTU 
 # Configure host VM using daemonset to disable hugepages
 kubectl apply -f ../resources/hostvm-node-configurer-daemonset.yaml
 
+# Define storage class for dynamically generated persistent volumes
+# NOT USED IN THIS EXAMPLE AS EXPLICITLY CREATING DISKS FOR USE BY PERSISTENT
+# VOLUMES, HENCE COMMENTED OUT BELOW
+#kubectl apply -f ../resources/gce-ssd-storageclass.yaml
+
 # Register GCE Fast SSD persistent disks and then create the persistent disks 
 echo "Creating GCE disks"
-kubectl apply -f ../resources/gce-ssd-storageclass.yaml
-sleep 5
 for i in 1 2 3
 do
     gcloud compute disks create --size 10GB --type pd-ssd pd-ssd-disk-$i
